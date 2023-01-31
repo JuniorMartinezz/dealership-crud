@@ -1,9 +1,10 @@
+import { Container } from "./HeaderStyled";
+
 function Header() {
     return (
-        <header className="container-fluid p-5 bg-primary text-white text-center" >
-            <h1>Componentes React</h1>
-            <p>Minha página com componentes React...</p>
-        </header>
+        <Container>
+            <h1>Concessionária</h1>
+        </Container>
     )
 }
 
