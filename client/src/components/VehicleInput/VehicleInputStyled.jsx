@@ -22,6 +22,12 @@ export const Container = styled.div`
     .container-element{
         margin-bottom: 0.5rem;
     }
+
+    select.car::selection{
+        select.vehicle-type{
+            display: none;
+        }
+    }
 `
 export const Button = styled.button`
     align-items: center;
