@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Container, Button, VehicleRegister } from "./VehicleInputStyled";
+import Axios from 'axios';
 
 function VehicleInput(){
     const [values, setValues] = useState();
@@ -11,20 +12,28 @@ function VehicleInput(){
         }));
     }
 
-    const handleOnClickButton = () => {
-        console.log(values);
-    }
-
     const handleSelectType = () => {
         document.querySelector('#vehicle-type-text').style.display = 'none';
     }
+
+    const handleOnClickButton = () => {
+        Axios.post("http://localhost:3001/register", {
+            type: values.type,
+            brand: values.brand,
+            model: values.model,
+            color: values.color,
+            release_date: values.release_date,
+        }).then((response) => {
+            console.log(response)
+        });
+    };
 
     return(
         <Container>
                 <VehicleRegister>
                     <h3>Registro de veículo</h3>
                     
-                    <select name="vehicle-type" id="vehicle-type" onChange={handleChangeValues} onClick={handleSelectType} required>
+                    <select name="type" id="type" onChange={handleChangeValues} onClick={handleSelectType} required>
                         <option value="vehicle-type-text" id="vehicle-type-text">Tipo de veículo</option>
                         <option value="carro">Carro</option>
                         <option value="motocicleta">Moto</option>
@@ -59,8 +68,8 @@ function VehicleInput(){
 
                     <input 
                         type="date"
-                        name="release-date"
-                        id="release-date"
+                        name="release_date"
+                        id="release_date"
                         onChange={handleChangeValues}
                         required
                     />
