@@ -15,12 +15,8 @@ function VehicleInput(){
         console.log(values);
     }
 
-    const handleSelected = () => {
-        var x = document.getElementById('vehicle-type');
-        var y = document.getElementsByName('vehicle-type-text');
-        if(x.options[x.selectedIndex].value === 0){
-           y.addAttribute("disabled", true); 
-        }
+    const handleSelectType = () => {
+        document.querySelector('#vehicle-type-text').style.display = 'none';
     }
 
     return(
@@ -28,10 +24,10 @@ function VehicleInput(){
                 <VehicleRegister>
                     <h3>Registro de veículo</h3>
                     
-                    <select name="vehicle-type" id="vehicle-type" onChange={handleChangeValues} onClick={handleSelected}>
-                        <option value="vehicle-type-text" name="vehicle-type-text">Tipo de veículo</option>
-                        <option value="car" name="car">Carro</option>
-                        <option value="motorcycle" name="moto">Moto</option>
+                    <select name="vehicle-type" id="vehicle-type" onChange={handleChangeValues} onClick={handleSelectType} required>
+                        <option value="vehicle-type-text" id="vehicle-type-text">Tipo de veículo</option>
+                        <option value="carro">Carro</option>
+                        <option value="motocicleta">Moto</option>
                     </select>
                 
                     <input 
@@ -40,6 +36,7 @@ function VehicleInput(){
                         id="brand" 
                         placeholder="Marca"
                         onChange={handleChangeValues} //cuida a mudança de valores nos campos input
+                        required
                     />
                 
                     <input 
@@ -48,6 +45,7 @@ function VehicleInput(){
                         id="model" 
                         placeholder="Modelo"
                         onChange={handleChangeValues}
+                        required
                     />
                 
                     <input 
@@ -56,6 +54,15 @@ function VehicleInput(){
                         id="color" 
                         placeholder="Cor"
                         onChange={handleChangeValues}
+                        required
+                    />
+
+                    <input 
+                        type="date"
+                        name="release-date"
+                        id="release-date"
+                        onChange={handleChangeValues}
+                        required
                     />
                     
                     <Button onClick={handleOnClickButton}>Cadastrar</Button>

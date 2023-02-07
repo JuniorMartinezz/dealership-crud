@@ -6,7 +6,7 @@ const app = express();
 
 app.get('/', (req, res) => {
     let SQL = 
-            "DELETE FROM car WHERE car_name = 'toyota'"
+            "INSERT INTO car(car_model, car_brand, car_color, car_year)"
             
 
     db.query(SQL, (err, result) => {
